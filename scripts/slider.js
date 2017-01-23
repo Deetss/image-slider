@@ -23,3 +23,42 @@ function startSlider(){
   },3000)
 
 };
+
+function prev(){
+newSlide =  sliderInt-1;
+showSlide(newSlide);
+};
+
+function next(){
+newSlide =  sliderInt+1;
+showSlide(newSlide);
+};
+
+function stopLoop(){
+  window.clearInterval(loop);
+
+}
+
+function showSlide(id){
+  stopLoop();
+  if(id>count){
+    id = 1;
+  }else if(id<1){
+    id=count;
+  }
+  $("#slider>img").fadeOut(300);
+  $("#slider>img#" + id).fadeIn(300);
+
+  id = sliderNext;
+  sliderNext = id + 1;
+  startSlider();
+}
+
+$("#slider>img").hover(
+  function(){
+    stopLoop();
+  },
+  function(){
+    startSlider();
+  }
+)
