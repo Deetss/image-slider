@@ -6,9 +6,9 @@ $(document).ready(function(){
   startSlider();
 });
 
-function startSlider(){
-  count= $("#slider>img").length;
+var count= $("#slider>img").length;
 
+function startSlider(){
   loop = setInterval(function(){
 
     if(sliderNext>count){
@@ -21,17 +21,17 @@ function startSlider(){
     sliderInt = sliderNext;
     sliderNext = sliderNext + 1;
   },3000)
-
 };
 
 function prev(){
-newSlide =  sliderInt-1;
-showSlide(newSlide);
+  newSlide =  sliderInt-1;
+  showSlide(newSlide);
 };
 
 function next(){
-newSlide =  sliderInt+1;
-showSlide(newSlide);
+  newSlide =  sliderInt+1;
+  showSlide(newSlide);
+
 };
 
 function stopLoop(){
@@ -46,8 +46,8 @@ function showSlide(id){
   }else if(id<1){
     id=count;
   }
-  $("#slider>img").fadeOut(300);
-  $("#slider>img#" + id).fadeIn(300);
+  $("#slider>img").hide();
+  $("#slider>img#" + id).show();
 
   id = sliderNext;
   sliderNext = id + 1;
