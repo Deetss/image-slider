@@ -1,8 +1,8 @@
 sliderInt =1;
 sliderNext=2;
-
+/*start slider when page loads*/
 $(document).ready(function(){
-  $("#slider>img#1").fadeIn(300);
+  $("#slider>img#img1").fadeIn(300);
   startSlider();
 });
 
@@ -15,17 +15,23 @@ function startSlider(){
       sliderNext = 1;
       sliderInt = 1;
     }
-    $("#slider>img").fadeOut(300);
-    $("#slider>img#" + sliderNext).fadeIn(300);
+    $("#slider>img").fadeOut(150);
+    $("#slider>img#img" + sliderNext).fadeIn(150);
 
     sliderInt = sliderNext;
     sliderNext = sliderNext + 1;
-  },3000)
+    inTransition = false;
+  },1500)
 };
 
+
+var inTransition = false;
 function prev(){
-  newSlide =  sliderInt-1;
-  showSlide(newSlide);
+  if( !inTransition ) {
+    inTransition = true;
+    newSlide =  sliderInt-1;
+    showSlide(newSlide);
+  }
 };
 
 function next(){
@@ -47,7 +53,8 @@ function showSlide(id){
     id=count;
   }
   $("#slider>img").hide();
-  $("#slider>img#" + id).show();
+  $("#slider>img#img" + id).show();
+
 
   id = sliderNext;
   sliderNext = id + 1;
